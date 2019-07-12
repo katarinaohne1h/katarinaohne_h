@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    body {
+      background-image: url(background.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: black;
+    }
+
+    #moveme {
+      padding: 0;
+      margin: 0;
+      color: hsl(80, 100%, 50%);
+      position: fixed;
+      font-size: 50px;
+      font-family: sans-serif;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function() {
+      var moveme = document.getElementById("moveme");
+      var p = [
+        Math.floor(Math.random() * (window.innerWidth - moveme.offsetWidth)),
+        Math.floor(Math.random() * (window.innerHeight - moveme.offsetHeight))
+      ]
+      var v = [1, 1];
+      var speed = 3;
+
+      function tick() {
+        var moveme = document.getElementById("moveme");
+        p[0] += v[0] * speed
+        p[1] += v[1] * speed;
+
+        if (p[0] + moveme.offsetWidth > window.innerWidth || p[0] < 0) {
+          v[0] *= -1;
+          moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+        }
+        if (p[1] + moveme.offsetHeight > window.innerHeight || p[1] < 0) {
+          v[1] *= -1;
+          moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+        }
+
+        moveme.style.left = p[0] + "px";
+        moveme.style.top = p[1] + "px";
+        window.requestAnimationFrame(tick);
+      }
+      window.requestAnimationFrame(tick);
+    }
+  </script>
+</head>
+
+<body>
+  <a id="moveme">katarinaohneh.com</a>
+</body>
+</html>
