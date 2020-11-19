@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <style type="text/css">
-    body {
-      background-image: url(background.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: white;
-    }
 
+    body {
+      background: linear-gradient(#D7006D, white, white, white, white, white, #D6006E);
+      font-family: sans-serif;
+    }
+    h1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      font-size: 50px;
+    }
     #moveme {
       padding: 0;
       margin: 0;
       color: hsl(80, 100%, 50%);
       position: fixed;
       font-size: 50px;
-      font-family: sans-serif;
+    }
+    #left-menu {
+      font-weight: bold;
+      top: 50%;
+      position: absolute;
+      transform:  rotate(-90deg);
+      float: left;
+      left: -100px;
+      font-size: 30px;
+    }
+
+    #right-menu {
+      font-weight: bold;
+      transform: rotate(90deg);
+      float: right;
+      top: 50%;
+      position: absolute;
+      right: -200px;
+      font-size: 30px;
     }
   </style>
   <script type="text/javascript">
@@ -27,6 +52,20 @@
       ]
       var v = [1, 1];
       var speed = 3;
+      var images = [
+        'images/1.jpg',
+        'images/2.jpg',
+        'images/3.jpg'
+      ]
+      var color = "#D7006D";
+      var imageScale = 4;
+
+      var canvas = document.getElementById("bg-canvas");
+      var context = canvas.getContext("2d");
+
+      // those need to be set and cannot be inferred from the css apparently
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
       function tick() {
         var moveme = document.getElementById("moveme");
@@ -47,11 +86,51 @@
         window.requestAnimationFrame(tick);
       }
       window.requestAnimationFrame(tick);
+
+      function paintImages() {
+          var e,
+              n = {
+                  x: 0,
+                  y: 0
+              },
+              _ = 80;
+          var a = !1,
+              g = 1500;
+
+          function p() {
+            new Date - e < g ? setTimeout(p, g) : (a = !1, context.clearRect(0, 0, canvas.width, canvas.height))
+          }
+          $("#bg-canvas").on("mousemove", function(o) {
+              if (jQuery(".move").hide(), e = new Date, !1 === a && (a = !0, setTimeout(p, g)), o.pageX - n.x > _ || o.pageX - n.x < -_ || o.pageY - n.y > _ || o.pageY - n.y < -_) {
+                  n.x = o.pageX, n.y = o.pageY;
+                  var image = new Image;
+                  image.onload = function() {
+                    // console.log("image width:  %i , height: %i", image.width, image.height);
+                    var width_offset = .1 * this.width, height_offset = .1 * this.height;
+                    context.strokeStyle = color;
+                    context.lineWidth = 1;
+                    context.strokeRect(o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
+                    context.drawImage(image, o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
+                  }, rand_image_src(image)
+              }
+          })
+      }
+
+      paintImages();
+
+      function rand_image_src(image){
+        image.src = images[Math.floor(Math.random() * images.length)];
+      };
     }
   </script>
 </head>
 
 <body>
-  <a id="moveme">IN CONSTRUCTION</a>
+  <h1>katarina *</h1>
+  <div id="left-menu">Shitty  phone  photos</div>
+  <div id='right-menu'>* ohneh  write me a letter  instagram</div>
+  <canvas id='bg-canvas'>
+  </canvas>
+  <a id="moveme">10% geladen</a>
 </body>
 </html>
