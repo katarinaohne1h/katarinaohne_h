@@ -5,9 +5,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <style type="text/css">
 
+    @font-face {
+      font-family: akzidenz;
+      src: url(fonts/AkzidenzGrotesk-Extended.otf);
+    }
+
     body {
-      background: linear-gradient(#D7006D, white, white, white, white, white, #D6006E);
-      font-family: sans-serif;
+      background: linear-gradient(#D7006D, white,white, white, white, white, white, white, #D6006E);
+      font-family: akzidenz;
     }
     h1 {
       display: flex;
@@ -58,7 +63,7 @@
         'images/3.jpg'
       ]
       var color = "#D7006D";
-      var imageScale = 4;
+      var imageScale = 3;
 
       var canvas = document.getElementById("bg-canvas");
       var context = canvas.getContext("2d");
@@ -107,9 +112,9 @@
                   image.onload = function() {
                     // console.log("image width:  %i , height: %i", image.width, image.height);
                     var width_offset = .1 * this.width, height_offset = .1 * this.height;
-                    context.strokeStyle = color;
-                    context.lineWidth = 1;
-                    context.strokeRect(o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
+                    // context.strokeStyle = color;
+                    // context.lineWidth/ = 0;
+                    // context.strokeRect(o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
                     context.drawImage(image, o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
                   }, rand_image_src(image)
               }

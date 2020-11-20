@@ -1,0 +1,86 @@
+%!Adobe-FontList 1.22
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:/Users/prinzesserina/Desktop/katarinaohneh.com/Document fonts/AdobeFnt22.lst
+FileLength:2024
+FileModTime:627469484
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:AkzidenzGroteskBQ-Ext
+FamilyName:Akzidenz-Grotesk BQ Extended
+StyleName:Regular
+MenuName:Akzidenz-Grotesk BQ Extended
+StyleBits:0
+WeightClass:500
+WidthClass:5
+AngleClass:0
+FullName:Akzidenz-Grotesk BQ Extended
+WritingScript:Roman
+OutlineFileName:/Users/prinzesserina/Desktop/katarinaohneh.com/Document fonts/AkzidenzGrotesk-Extended.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:34612
+FileModTime:584910992
+NameArray:0,Mac,4,Akzidenz-Grotesk BQ Extended
+NameArray:0,Win,1,Akzidenz-Grotesk BQ Extended
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:AkzidenzGroteskBQ-MedExt
+FamilyName:Akzidenz-Grotesk BQ Extended
+StyleName:Medium
+MenuName:Akzidenz-Grotesk BQ Extended
+StyleBits:0
+WeightClass:500
+WidthClass:5
+AngleClass:0
+FullName:Akzidenz-Grotesk BQ Medium Extended
+WritingScript:Roman
+OutlineFileName:/Users/prinzesserina/Desktop/katarinaohneh.com/Document fonts/AkzidenzGrotesk-MediumExtended.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:35156
+FileModTime:584910992
+NameArray:0,Mac,4,Akzidenz-Grotesk BQ Medium Extended
+NameArray:0,Win,1,Akzidenz-Grotesk BQ Extended
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:AkzidenzGroteskBQ-MedExtIt
+FamilyName:Akzidenz-Grotesk BQ Extended
+StyleName:Medium Italic
+MenuName:Akzidenz-Grotesk BQ Extended
+StyleBits:1
+WeightClass:500
+WidthClass:5
+AngleClass:1
+FullName:Akzidenz-Grotesk BQ Medium Extended Italic
+WritingScript:Roman
+OutlineFileName:/Users/prinzesserina/Desktop/katarinaohneh.com/Document fonts/AkzidenzGrotesk-MediumExtendedItalic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:32212
+FileModTime:584910992
+NameArray:0,Mac,4,Akzidenz-Grotesk BQ Medium Extended Italic
+NameArray:0,Win,1,Akzidenz-Grotesk BQ Extended
+%EndFont
+
