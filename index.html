@@ -11,7 +11,7 @@
     }
 
     body {
-      background: linear-gradient(#D7006D, white,white, white, white, white, white, white, #D6006E);
+      background: linear-gradient(#df609f, white,white, white, white, white, white, #df609f);
       font-family: akzidenz;
     }
     h1 {
@@ -20,6 +20,10 @@
       justify-content: center;
       text-align: center;
       font-size: 50px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
     }
     #moveme {
       padding: 0;
@@ -50,11 +54,11 @@
   </style>
   <script type="text/javascript">
     window.onload = function() {
-      var moveme = document.getElementById("moveme");
-      var p = [
-        Math.floor(Math.random() * (window.innerWidth - moveme.offsetWidth)),
-        Math.floor(Math.random() * (window.innerHeight - moveme.offsetHeight))
-      ]
+      // var moveme = document.getElementById("moveme");
+      // var p = [
+      //   Math.floor(Math.random() * (window.innerWidth - moveme.offsetWidth)),
+      //   Math.floor(Math.random() * (window.innerHeight - moveme.offsetHeight))
+      // ]
       var v = [1, 1];
       var speed = 3;
       var images = [
@@ -72,25 +76,25 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      function tick() {
-        var moveme = document.getElementById("moveme");
-        p[0] += v[0] * speed
-        p[1] += v[1] * speed;
+      // function tick() {
+      //   var moveme = document.getElementById("moveme");
+      //   p[0] += v[0] * speed
+      //   p[1] += v[1] * speed;
 
-        if (p[0] + moveme.offsetWidth > window.innerWidth || p[0] < 0) {
-          v[0] *= -1;
-          moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
-        }
-        if (p[1] + moveme.offsetHeight > window.innerHeight || p[1] < 0) {
-          v[1] *= -1;
-          moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
-        }
+      //   if (p[0] + moveme.offsetWidth > window.innerWidth || p[0] < 0) {
+      //     v[0] *= -1;
+      //     moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+      //   }
+      //   if (p[1] + moveme.offsetHeight > window.innerHeight || p[1] < 0) {
+      //     v[1] *= -1;
+      //     moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+      //   }
 
-        moveme.style.left = p[0] + "px";
-        moveme.style.top = p[1] + "px";
-        window.requestAnimationFrame(tick);
-      }
-      window.requestAnimationFrame(tick);
+      //   moveme.style.left = p[0] + "px";
+      //   moveme.style.top = p[1] + "px";
+      //   window.requestAnimationFrame(tick);
+      // }
+      // window.requestAnimationFrame(tick);
 
       function paintImages() {
           var e,
@@ -133,9 +137,9 @@
 <body>
   <h1>katarina *</h1>
   <div id="left-menu">Shitty  phone  photos</div>
-  <div id='right-menu'>* ohneh  write me a letter  instagram</div>
+  <div id='right-menu'>* ohneh  <a href="mailto:katarinastefanakos@googlemail.com">write me a letter</a><a href="https://www.instagram.com/katarinaohne_h/">instagram</a></div>
   <canvas id='bg-canvas'>
   </canvas>
-  <a id="moveme">10% geladen</a>
+  <!-- <a id="moveme">10% geladen</a> -->
 </body>
 </html>
