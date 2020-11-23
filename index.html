@@ -16,13 +16,10 @@
     }
 
     body {
-      background: linear-gradient(#df609f, white,white, white, white, white, white, #df609f);
       font-family: akzidenz-medium;
     }
+
     h1 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       text-align: center;
       font-size: 50px;
       font-family: akzidenz-bold;
@@ -37,6 +34,14 @@
 
     a:hover {
       background-color: rgb(223, 96, 159);
+    }
+
+    canvas {
+      position:absolute;
+      left:0;
+      top:0;
+      z-index:-1;
+      background: linear-gradient(#df609f, white,white, white, white, white, white, #df609f);
     }
 
     #left-menu {
@@ -55,7 +60,7 @@
       float: right;
       top: 50%;
       position: absolute;
-      right: -200px;
+      right: -250px;
       font-size: 30px;
     }
 
@@ -85,33 +90,47 @@
 
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-
-      function paintImages() {
+      var a = false;
+      function dripImages() {
           var e,
               n = {
                   x: 0,
                   y: 0
               },
               _ = 80;
-          var a = !1,
-              g = 1500;
+          var flushTime = 1500;
 
           function p() {
-            new Date - e < g ? setTimeout(p, g) : (a = !1, context.clearRect(0, 0, canvas.width, canvas.height))
+            new Date - e < flushTime ? setTimeout(p, flushTime) : (a = !1, context.clearRect(0, 0, canvas.width, canvas.height))
           }
           $("#bg-canvas").on("mousemove", function(o) {
-              if (e = new Date, !1 === a && (a = !0, setTimeout(p, g)), o.pageX - n.x > _ || o.pageX - n.x < -_ || o.pageY - n.y > _ || o.pageY - n.y < -_) {
-                  n.x = o.pageX, n.y = o.pageY;
-                  var image = new Image;
-                  image.onload = function() {
-                    var width_offset = .1 * this.width, height_offset = .1 * this.height;
-                    context.drawImage(image, o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
-                  }, rand_image_src(image)
+              if (e = new Date, !1 === a && (a = !0, setTimeout(p, flushTime)), o.pageX - n.x > _ || o.pageX - n.x < -_ || o.pageY - n.y > _ || o.pageY - n.y < -_) {
+                var image = new Image;
+                image.onload = function() {
+                  var width_offset = .1 * this.width, height_offset = .1 * this.height;
+                  context.drawImage(image, o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
+                }
+                rand_image_src(image);
               }
           })
       }
 
-      paintImages();
+      dripImages();
+
+      function paintImage(){
+        if (!1 === a) {
+          var image = new Image;
+          image.onload = function() {
+            var x  = Math.floor(Math.random() * canvas.width)
+            var y = Math.floor(Math.random() * canvas.height)
+            console.log(x, y);
+            context.drawImage(image, x, y, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
+          }
+          rand_image_src(image)
+        }
+      }
+
+      setInterval(paintImage, 1000);
 
       function rand_image_src(image){
         image.src = imageFolder + "/" + Math.floor(Math.random() * imageFolderSize).toString() + ".jpg";
