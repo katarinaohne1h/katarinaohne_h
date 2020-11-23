@@ -6,13 +6,18 @@
   <style type="text/css">
 
     @font-face {
-      font-family: akzidenz;
+      font-family: akzidenz-medium;
       src: url(fonts/AkzidenzGrotesk-Extended.otf);
+    }
+
+    @font-face {
+      font-family: akzidenz-bold;
+      src: url(fonts/AkzidenzGrotesk-MediumExtended.otf);
     }
 
     body {
       background: linear-gradient(#df609f, white,white, white, white, white, white, #df609f);
-      font-family: akzidenz;
+      font-family: akzidenz-medium;
     }
     h1 {
       display: flex;
@@ -20,18 +25,20 @@
       justify-content: center;
       text-align: center;
       font-size: 50px;
+      font-family: akzidenz-bold;
     }
+
     a {
+      margin-left: 15px;
+      margin-right: 15px;
       text-decoration: none;
       color: black;
     }
-    #moveme {
-      padding: 0;
-      margin: 0;
-      color: hsl(80, 100%, 50%);
-      position: fixed;
-      font-size: 50px;
+
+    a:hover {
+      background-color: rgb(223, 96, 159);
     }
+
     #left-menu {
       font-weight: bold;
       top: 50%;
@@ -51,50 +58,33 @@
       right: -200px;
       font-size: 30px;
     }
+
+    #text {
+      height: 20%;
+      bottom: 0;
+      position: fixed;
+      padding-left: 15%;
+      padding-right: 15%;
+    }
   </style>
   <script type="text/javascript">
     window.onload = function() {
-      // var moveme = document.getElementById("moveme");
-      // var p = [
-      //   Math.floor(Math.random() * (window.innerWidth - moveme.offsetWidth)),
-      //   Math.floor(Math.random() * (window.innerHeight - moveme.offsetHeight))
-      // ]
-      var v = [1, 1];
-      var speed = 3;
-      var images = [
-        'images/1.jpg',
-        'images/2.jpg',
-        'images/3.jpg'
-      ]
-      var color = "#D7006D";
+      // mogrify -quality 91 -resize 1000x1000 -format jpg *.*
+      // a=0
+      // for i in *.jpg; do
+      //   new=$(printf "%d.jpg" "$a")
+      //   mv -i -- "$i" "$new"
+      //   let a=a+1
+      // done
+      var imageFolder = "images/all";
+      var imageFolderSize = 55;
       var imageScale = 3;
 
       var canvas = document.getElementById("bg-canvas");
       var context = canvas.getContext("2d");
 
-      // those need to be set and cannot be inferred from the css apparently
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-
-      // function tick() {
-      //   var moveme = document.getElementById("moveme");
-      //   p[0] += v[0] * speed
-      //   p[1] += v[1] * speed;
-
-      //   if (p[0] + moveme.offsetWidth > window.innerWidth || p[0] < 0) {
-      //     v[0] *= -1;
-      //     moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
-      //   }
-      //   if (p[1] + moveme.offsetHeight > window.innerHeight || p[1] < 0) {
-      //     v[1] *= -1;
-      //     moveme.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"
-      //   }
-
-      //   moveme.style.left = p[0] + "px";
-      //   moveme.style.top = p[1] + "px";
-      //   window.requestAnimationFrame(tick);
-      // }
-      // window.requestAnimationFrame(tick);
 
       function paintImages() {
           var e,
@@ -110,15 +100,11 @@
             new Date - e < g ? setTimeout(p, g) : (a = !1, context.clearRect(0, 0, canvas.width, canvas.height))
           }
           $("#bg-canvas").on("mousemove", function(o) {
-              if (jQuery(".move").hide(), e = new Date, !1 === a && (a = !0, setTimeout(p, g)), o.pageX - n.x > _ || o.pageX - n.x < -_ || o.pageY - n.y > _ || o.pageY - n.y < -_) {
+              if (e = new Date, !1 === a && (a = !0, setTimeout(p, g)), o.pageX - n.x > _ || o.pageX - n.x < -_ || o.pageY - n.y > _ || o.pageY - n.y < -_) {
                   n.x = o.pageX, n.y = o.pageY;
                   var image = new Image;
                   image.onload = function() {
-                    // console.log("image width:  %i , height: %i", image.width, image.height);
                     var width_offset = .1 * this.width, height_offset = .1 * this.height;
-                    // context.strokeStyle = color;
-                    // context.lineWidth/ = 0;
-                    // context.strokeRect(o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
                     context.drawImage(image, o.pageX - width_offset, o.pageY - height_offset, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
                   }, rand_image_src(image)
               }
@@ -128,7 +114,7 @@
       paintImages();
 
       function rand_image_src(image){
-        image.src = images[Math.floor(Math.random() * images.length)];
+        image.src = imageFolder + "/" + Math.floor(Math.random() * imageFolderSize).toString() + ".jpg";
       };
     }
   </script>
@@ -136,10 +122,11 @@
 
 <body>
   <h1>katarina *</h1>
-  <div id="left-menu">Shitty  phone  photos</div>
-  <div id='right-menu'>* ohneh  <a href="mailto:katarinastefanakos@googlemail.com">write me a letter</a><a href="https://www.instagram.com/katarinaohne_h/">instagram</a></div>
   <canvas id='bg-canvas'>
   </canvas>
-  <!-- <a id="moveme">10% geladen</a> -->
+  <div id="left-menu"><a href="photos.html">Shitty  phone  photos</a></div>
+  <div id='right-menu'><a href="selfies.html">* ohneh </a><a href="mailto:hi@katarinaohneh.com">write me a letter </a> <a href="https://www.instagram.com/katarinaohne_h/">instagram</a></div>
+  <!-- <div id="text">Katarina is a young woman. She likes to take photos with her phone and studies at the University of Applied Sciences Potsdam Kommunicationdesign.</div> -->
+  <!-- <div id="text">Katarina's collection of phone photography from 2015 to the present including boring everyday photography and absurd experiences that she captures on her phone.</div> -->
 </body>
 </html>
