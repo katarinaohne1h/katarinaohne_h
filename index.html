@@ -21,19 +21,28 @@
 
     h1 {
       text-align: center;
+      float: left;
       font-size: 50px;
       font-family: akzidenz-bold;
     }
 
+    #subtitle {
+      font-size: 50px;
+      float: right;
+      font-family: akzidenz-bold;
+    }
+
     a {
-      margin-left: 15px;
-      margin-right: 15px;
       text-decoration: none;
       color: black;
     }
 
     a:hover {
       background-color: rgb(223, 96, 159);
+    }
+
+    #cta {
+      font-size: 25px;
     }
 
     canvas {
@@ -44,24 +53,13 @@
       background: linear-gradient(#df609f, white,white, white, white, white, white, #df609f);
     }
 
-    #left-menu {
-      font-weight: bold;
-      top: 50%;
-      position: absolute;
-      transform:  rotate(-90deg);
-      float: left;
-      left: -100px;
-      font-size: 30px;
-    }
-
     #right-menu {
       font-weight: bold;
-      transform: rotate(90deg);
       float: right;
-      top: 50%;
       position: absolute;
-      right: -250px;
       font-size: 30px;
+      bottom: 20px;
+      right: 10px;
     }
 
     #text {
@@ -97,7 +95,7 @@
                   x: 0,
                   y: 0
               },
-              _ = 80;
+              _ = 200;
           var flushTime = 1500;
 
           function p() {
@@ -121,8 +119,8 @@
         if (!1 === a) {
           var image = new Image;
           image.onload = function() {
-            var x  = Math.floor(Math.random() * canvas.width)
-            var y = Math.floor(Math.random() * canvas.height)
+            var x  = Math.floor(Math.random() * canvas.width) - 100;
+            var y = Math.floor(Math.random() * canvas.height) - 100;
             console.log(x, y);
             context.drawImage(image, x, y, Math.floor(image.width/imageScale), Math.floor(image.height/imageScale));
           }
@@ -144,9 +142,6 @@
   <h1>katarina *</h1>
   <canvas id='bg-canvas'>
   </canvas>
-  <div id="left-menu"><a href="photos.html">Shitty  phone  photos</a></div>
-  <div id='right-menu'><a href="selfies.html">* ohneh </a><a href="mailto:hi@katarinaohneh.com">write me a letter </a> <a href="https://www.instagram.com/katarinaohne_h/" target="_blank">instagram</a></div>
-  <!-- <div id="text">Katarina is a young woman. She likes to take photos with her phone and studies at the University of Applied Sciences Potsdam Kommunicationdesign.</div> -->
-  <!-- <div id="text">Katarina's collection of phone photography from 2015 to the present including boring everyday photography and absurd experiences that she captures on her phone.</div> -->
+  <div id='right-menu'><div id="subtitle">*ohne h</div><br><div id="cta"><a href="mailto:hi@katarinaohneh.com">write her a letter </a></div></div>
 </body>
 </html>
