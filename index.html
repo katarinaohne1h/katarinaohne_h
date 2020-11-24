@@ -95,7 +95,7 @@
                   x: 0,
                   y: 0
               },
-              _ = 200;
+              _ = 80;
           var flushTime = 1500;
 
           function p() {
@@ -103,6 +103,7 @@
           }
           $("#bg-canvas").on("mousemove", function(o) {
               if (e = new Date, !1 === a && (a = !0, setTimeout(p, flushTime)), o.pageX - n.x > _ || o.pageX - n.x < -_ || o.pageY - n.y > _ || o.pageY - n.y < -_) {
+                n.x = o.pageX, n.y = o.pageY;
                 var image = new Image;
                 image.onload = function() {
                   var width_offset = .1 * this.width, height_offset = .1 * this.height;
